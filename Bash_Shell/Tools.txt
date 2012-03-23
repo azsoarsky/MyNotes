@@ -5,6 +5,9 @@ Creation-Date: 2012-01-04T14:27:54+08:00
 ====== Tools ======
 Created Wednesday 04 January 2012
 
+==== host ====
+* host -t AAAA ipv6.google.com
+
 ==== luit ====
 alias bbs='luit -encoding gbk telnet bbs.ustc.edu.cn'
 
@@ -51,8 +54,10 @@ alias bbs='luit -encoding gbk telnet bbs.ustc.edu.cn'
 
 ==== dialog ====
 
-==== lsof, stat, du, df, netstat ====
+==== lsof, stat, netstat ====
 netstat -lpn
+
+==== du, df ====
 
 ==== openssh ====
 * SSH client configuration file can be found and edited in [[/etc/ssh/ssh_config.]]
@@ -93,19 +98,41 @@ netstat -lpn
 
 ==== xargs ====
 
-==== sed ====
-
 ==== seq ====
 
 ==== find ====
 
 ==== select ====
 
-==== awk ====
+==== tr,look,bison,flex ====
 
-==== wc ====
+==== awk,sed,grep,sort,uniq,wc,head,tail ====
+awk：处理结构化的文本(每行以固定符号分成若干列)，提取打印某些字段，如：
+	ls -l|awk '{print $1}'  --将ls-l结果的第一列打印出来
+	awk -F":" '{print $1"  "$6}' /etc/passwd ，将以:分割的/etc/passwd文件的第1，6列打印出来，中间以空格分开
+	详见IBM DW中国的AWK实例(共3篇) 或 Bash新手指南中文版第6章。
+grep：过滤，大家用得最多的命令，支持正则表达式。参数有：
+	-i忽略大小写，-n显示line number，-c 统计在每个文件的出现次数，-l只显示符合的文件的名字。
 
-==== sort ====
+sed：流编辑器，主要用于替换，如：
+	sed -e '1,10s/foo/bar/g' myfile2.txt 将1到10行的文本中的foo 替换成bar,s代表替换,g代表全局替换 
+	支持正则的替换字符串，可以只替换某个范围内的内容。
+	用法不算简单,详见IBM DW中国的Sed实例(共3篇)或 Bash新手指南中文版第5章。
+sort：排序，参数有：
+	-r逆序, -n 数字比较 , -M 日历比较 Feb,Dec, -f 忽略大小写
+	同样支持结构化文件，如
+	sort -t : -k 1,1 /etc/passwd，以: 分割,只按第1列排序
+	sort -t : -k 1,1 -k2.2,3.4 /etc/passwd ，以:分割,先按第1列排序,再按第2列的第二个字符到第3列的第4个字符排序。
+uniq：去除重复行。
+	除了正常用法外，还有-c统计重复次数，和-u （唯一）和 -d （重复）两个参数,只显示唯一的和重复的行。
+wc： 统计。
+	-l 行,-m 字符,-w 单词
+
+* sudo modprobe -r `lsmod | grep mac80211 | awk '{print $4}' | sed '1q' | awk -F"," '{print $2}'`，能够卸载模块
+* awk中可以通过指定FS和OFS来改变field separetor
+* ifconfig eth0 | grep inet6 | awk '{print $2}'，能够获取eth0的ipv6的地址
+* echo `pwd` | awk -F"/" '{print "/"$2"/"$3}'，能够获得当前目录的用户HOME目录
+
 
 ==== bc ====
 * An arbitrary precision calculator language

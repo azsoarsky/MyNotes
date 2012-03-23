@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2012-03-15T16:46:15+08:00
+
+====== IPv6 ======
+Created Thursday 15 March 2012
+
+==== 知识点 ====
+
+
+==== 一些东西 ====
+* ip -6 addr show dev eth0： 查看地址信息

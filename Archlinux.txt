@@ -85,3 +85,4 @@ ACTION=="remove", KERNEL=="sd[b-z][0-9]", RUN+="/bin/rm -rf /media/usb-%k", OPTI
 
 
 
+===== 8 好玩儿的东东 =====

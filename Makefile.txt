@@ -5,6 +5,21 @@ Creation-Date: 2011-09-27T17:57:36+08:00
 ====== Makefile ======
 Created 星期二 27 九月 2011
 
+==== 0 例子 ====
+CC = gcc
+CFLAGS = -Wall
+
+default: a b
+
+a: a.c util.c
+	$(CC) $(CFLAGS) -o a a.c util.c
+
+b: b.c util.c
+	$(CC) $(CFLAGS) -o b b.c util.c
+
+clean:
+	rm -f *.o a
+
 ===== 1 Makefile规则 =====
 target ... : prerequisites ...
         command

@@ -5,10 +5,14 @@ Creation-Date: 2012-01-04T14:27:41+08:00
 ====== Programming ======
 Created Wednesday 04 January 2012
 
+==== SUDO ====
+? 如何处理好bash shell中的权限问题 ?
+
 ==== $ ====
 $? 表示返回值；
 $# 表示参数数目；
 $0 表示可执行文件的文件名；
+$@
 
 
 ==== 从command line中获取输入 ====
